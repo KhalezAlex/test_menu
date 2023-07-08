@@ -1,13 +1,12 @@
 package org.klozevitz.test_menu.model.dao;
 
-import reactor.core.publisher.Mono;
-
 import java.util.List;
+import java.util.Optional;
 
 public interface IDaoDB<E> {
     List<E> findAll();
 
-    Mono<E> findById(Integer id);
+    Optional<E> findById(Integer id);
 
     E save(E e);
 

@@ -6,20 +6,13 @@ server:
       enabled: false
   servlet:
     context-path: /
-spring:
-  main:
-    allow-bean-definition-overriding: true
-  r2dbc:
-    url: r2dbc:pool:postgres://localhost:5432/test_menu
-    username: postgres
-    password: rootroot1
 
+spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/test_menu
     username: postgres
     password: rootroot1
     driver-class-name: org.postgresql.Driver
-
   jpa:
     hibernate:
       ddl-auto: update

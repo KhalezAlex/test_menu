@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.IDaoDB;
 import org.klozevitz.test_menu.model.entities.User;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,26 +16,31 @@ public class UserService implements IDaoDB<User> {
 
     @Override
     public List<User> findAll() {
-        return null;
+        return (List<User>) userRepository.findAll();
     }
 
     @Override
-    public Mono<User> findById(Integer id) {
-        return null;
+    public Optional<User> findById(Integer id) {
+        return userRepository.findById(id);
     }
 
     @Override
     public User save(User user) {
-        return null;
+        return userRepository.save(user);
     }
 
     @Override
     public User update(User user) {
+        if(userRepository.findById(user.getId()).isPresent()) {
+            return userRepository.save(user);
+        }
         return null;
     }
 
     @Override
     public User delete(Integer id) {
-        return null;
+        User user = findById(id).get();
+        userRepository.delete(user);
+        return user;
     }
 }

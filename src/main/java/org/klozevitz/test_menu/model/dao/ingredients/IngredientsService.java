@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.IDaoDB;
 import org.klozevitz.test_menu.model.entities.Menu.Ingredients;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -14,28 +14,34 @@ public class IngredientsService implements IDaoDB<Ingredients> {
 
     private final IngredientsRepository ir;
 
+
     @Override
     public List<Ingredients> findAll() {
-        return null;
+        return (List<Ingredients>) ir.findAll();
     }
 
     @Override
-    public Mono<Ingredients> findById(Integer id) {
-        return null;
+    public Optional<Ingredients> findById(Integer id) {
+        return ir.findById(id);
     }
 
     @Override
     public Ingredients save(Ingredients ingredients) {
-        return null;
+        return ir.save(ingredients);
     }
 
     @Override
     public Ingredients update(Ingredients ingredients) {
+        if(ir.findById(ingredients.getId()).isPresent()){
+            return ir.save(ingredients);
+        }
         return null;
     }
 
     @Override
     public Ingredients delete(Integer id) {
-        return null;
+        Ingredients ingredients = findById(id).get();
+        ir.delete(ingredients);
+        return ingredients;
     }
 }

@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.IDaoDB;
 import org.klozevitz.test_menu.model.entities.Menu.Dish;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,26 +16,31 @@ public class DishService implements IDaoDB<Dish> {
 
     @Override
     public List<Dish> findAll() {
-        return null;
+        return (List<Dish>) dishRepository.findAll();
     }
 
     @Override
-    public Mono<Dish> findById(Integer id) {
-        return null;
+    public Optional<Dish> findById(Integer id) {
+        return dishRepository.findById(id);
     }
 
     @Override
     public Dish save(Dish dish) {
-        return null;
+        return dishRepository.save(dish);
     }
 
     @Override
     public Dish update(Dish dish) {
+        if(dishRepository.findById(dish.getId()).isPresent()){
+            return dishRepository.save(dish);
+        }
         return null;
     }
 
     @Override
     public Dish delete(Integer id) {
-        return null;
+        Dish dish = findById(id).get();
+        dishRepository.delete(dish);
+        return dish;
     }
 }

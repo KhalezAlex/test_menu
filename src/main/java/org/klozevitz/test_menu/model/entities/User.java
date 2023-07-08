@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.klozevitz.test_menu.model.entities.Menu.Dish;
+import org.klozevitz.test_menu.model.entities.Role.Role;
 
 import java.util.Set;
 
@@ -22,6 +23,9 @@ public class User {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "user_role")
+    private Role role;
 
     @ManyToMany
     @JoinTable(name = "user_dishes_t", joinColumns = @JoinColumn(name = "user_id"),
