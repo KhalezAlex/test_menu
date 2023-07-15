@@ -1,4 +1,4 @@
-package org.klozevitz.test_menu.model.entities.Role;
+package org.klozevitz.test_menu.model.entities.role;
 
 //@Getter
 //@Setter

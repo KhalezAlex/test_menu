@@ -2,7 +2,7 @@ package org.klozevitz.test_menu.model.dao.dish;
 
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.IDaoDB;
-import org.klozevitz.test_menu.model.entities.Menu.Dish;
+import org.klozevitz.test_menu.model.entities.menu.Dish;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

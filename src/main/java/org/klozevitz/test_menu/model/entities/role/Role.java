@@ -1,5 +1,8 @@
-package org.klozevitz.test_menu.model.entities.Role;
+package org.klozevitz.test_menu.model.entities.role;
 
+import lombok.Getter;
+
+@Getter
 public enum Role {
     COMPANY,
     CHEF_COOKER,
@@ -7,5 +10,5 @@ public enum Role {
     MANAGER,
     BARTENDER,
     CHEF_BARTENDER,
-    WAITER
+    WAITER;
 }

@@ -1,4 +1,4 @@
-package org.klozevitz.test_menu.model.entities.Menu;
+package org.klozevitz.test_menu.model.entities.menu;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

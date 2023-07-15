@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.klozevitz.test_menu.model.entities.Menu.Ingredients;
+import org.klozevitz.test_menu.model.entities.menu.Ingredients;
 import org.klozevitz.test_menu.model.entities.User;
 
 import java.util.Set;
