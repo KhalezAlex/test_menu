@@ -18,3 +18,11 @@ spring:
       ddl-auto: update
 #      ddl-auto: create-drop
     show-sql: true
+
+application:
+  security:
+    jwt:
+      secret-key: cUEmhf7z62fwiGxpnUh4SlDyERzZ7KDO
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days

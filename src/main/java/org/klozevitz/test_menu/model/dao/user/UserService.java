@@ -48,8 +48,13 @@ public class UserService implements IDaoDB<User>, IDaoUser {
     }
 
     @Override
-    public User findUserByName(String name) {
+    public Optional<User> findUserByName(String name) {
         return userRepository.findByUsername(name);
+    }
+
+    @Override
+    public User findUserByUsername(String name){
+        return userRepository.findUserByUsername(name);
     }
 
     @Override
