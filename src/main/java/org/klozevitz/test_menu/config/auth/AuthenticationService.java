@@ -8,6 +8,7 @@ import org.klozevitz.test_menu.config.JWT.JwtService;
 import org.klozevitz.test_menu.model.dao.user.UserRepository;
 import org.klozevitz.test_menu.model.entities.User;
 import org.klozevitz.test_menu.model.entities.role.Role;
+//import org.klozevitz.test_menu.security.PBFDK2Encoder;
 import org.klozevitz.test_menu.token.Token;
 import org.klozevitz.test_menu.token.TokenRepository;
 import org.klozevitz.test_menu.token.TokenType;
@@ -24,6 +25,7 @@ import java.io.IOException;
 public class AuthenticationService {
     private final UserRepository repository;
     private final PasswordEncoder passwordEncoder;
+//    private final PBFDK2Encoder pbfdk2Encoder;
     private final JwtService jwtService;
     private final TokenRepository tokenRepository;
 
@@ -32,6 +34,7 @@ public class AuthenticationService {
     public AuthenticationResponse register(RegisterRequest request){
         var user = User.builder()
                 .username(request.getUsername())
+//                .password(pbfdk2Encoder.encode(request.getPassword()))
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.WAITER)
                 .build();
@@ -46,8 +49,8 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request){
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getName(), request.getPassword()));
-        var user = repository.findByUsername(request.getName()).orElseThrow();
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+        var user = repository.findByUsername(request.getUsername()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
