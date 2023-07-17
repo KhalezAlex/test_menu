@@ -15,7 +15,7 @@ import java.util.Optional;
 public class UserService implements IDaoDB<User>, IDaoUser {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder encoder;
+//    private final PasswordEncoder encoder;
 
     @Override
     public List<User> findAll() {
@@ -48,8 +48,13 @@ public class UserService implements IDaoDB<User>, IDaoUser {
     }
 
     @Override
-    public User findUserByName(String name) {
+    public Optional<User> findUserByName(String name) {
         return userRepository.findByUsername(name);
+    }
+
+    @Override
+    public User findUserByUsername(String name){
+        return userRepository.findUserByUsername(name);
     }
 
     @Override

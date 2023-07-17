@@ -15,7 +15,7 @@ public class DBUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = daoUser.findUserByName(username);
+        User user = daoUser.findUserByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
