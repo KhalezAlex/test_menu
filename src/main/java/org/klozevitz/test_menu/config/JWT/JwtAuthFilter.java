@@ -16,6 +16,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+
+
+/*
+Реализация фильтра авторизации
+Задача фильтра — передать токен из запроса менеджеру аутентификации и,
+в случае успешной аутентификации, установить контекст безопасности приложения.
+*/
+
 @Component
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {

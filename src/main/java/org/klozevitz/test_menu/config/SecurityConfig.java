@@ -40,9 +40,10 @@ public class SecurityConfig {
 //                        .requestMatchers("/profile", "/profile/update", "/logout", "/profile/activity/*",
 //                                "/event/participate", "/event/roastOut", "event/filter").authenticated()
 //                        .requestMatchers("/auth/register").anonymous()
-                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/auth/**", "/service/**").permitAll()
                         .anyRequest().authenticated()
-                ).sessionManagement((session) -> session
+                )
+                .sessionManagement((session) -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
