@@ -2,7 +2,7 @@ package org.klozevitz.test_menu.tests;
 
 import org.junit.jupiter.api.Test;
 import org.klozevitz.test_menu.model.entities.role.Role;
-import org.klozevitz.test_menu.model.entities.User;
+import org.klozevitz.test_menu.model.entities.entity.User;
 
 public class CreateUser {
     @Test

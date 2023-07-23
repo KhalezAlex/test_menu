@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.klozevitz.test_menu.model.entities.User;
+import org.klozevitz.test_menu.model.entities.entity.Profile;
+import org.klozevitz.test_menu.model.entities.entity.User;
 
 import java.util.Set;
 
@@ -33,6 +34,6 @@ public class Dish {
     private Set<Ingredients> ingredientsList;
 
     @ManyToMany(mappedBy = "dishes")
-    private Set<User> users;
+    private Set<Profile> profiles;
 
 }

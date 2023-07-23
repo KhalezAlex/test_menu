@@ -18,6 +18,4 @@ import java.util.Set;
 public class UserDTO {
     private Integer id;
     private String name;
-    private Set<Dish> dishes;
-
 }

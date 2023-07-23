@@ -1,5 +1,6 @@
-package org.klozevitz.test_menu.model.entities;
+package org.klozevitz.test_menu.model.entities.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.klozevitz.test_menu.model.entities.menu.Dish;
@@ -11,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.*;
 
 @Data
-//@ToString
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,10 +31,10 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @ManyToMany
-    @JoinTable(name = "user_dishes_t", joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "dish_id"))
-    private Set<Dish> dishes;
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    private Profile profile;
 
     @ToString.Include(name = "password")
     private String maskPassword(){

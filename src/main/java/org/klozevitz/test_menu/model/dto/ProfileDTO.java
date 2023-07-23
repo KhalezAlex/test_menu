@@ -6,9 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.klozevitz.test_menu.model.entities.entity.Profile;
-import org.klozevitz.test_menu.model.entities.menu.Ingredients;
-import org.klozevitz.test_menu.model.entities.entity.User;
+import org.klozevitz.test_menu.model.entities.menu.Dish;
 
 import java.util.Set;
 
@@ -17,10 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class DishDTO {
+public class ProfileDTO {
     private Integer id;
-    private String name;
-    private Double price;
-    private Set<Ingredients> ingredientsList;
-    private Set<Profile> profiles;
+    private Set<Dish> dishes;
 }

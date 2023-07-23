@@ -3,8 +3,7 @@ package org.klozevitz.test_menu.model.dao.user;
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.IDaoDB;
 import org.klozevitz.test_menu.model.entities.role.Role;
-import org.klozevitz.test_menu.model.entities.User;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.klozevitz.test_menu.model.entities.entity.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
