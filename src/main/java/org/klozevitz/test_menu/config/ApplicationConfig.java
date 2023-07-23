@@ -1,4 +1,4 @@
-package org.klozevitz.test_menu.config.JWT;
+package org.klozevitz.test_menu.config;
 
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.user.UserRepository;

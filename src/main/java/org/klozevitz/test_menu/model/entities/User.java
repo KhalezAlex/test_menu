@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.klozevitz.test_menu.model.entities.menu.Dish;
 import org.klozevitz.test_menu.model.entities.role.Role;
-import org.klozevitz.test_menu.token.Token;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -37,8 +36,10 @@ public class User implements UserDetails {
     inverseJoinColumns = @JoinColumn(name = "dish_id"))
     private Set<Dish> dishes;
 
-    @OneToMany(mappedBy = "user")
-    private List<Token> tokens;
+    @ToString.Include(name = "password")
+    private String maskPassword(){
+        return "********";
+    }
 
     public User(String username, String password) {
         this.username = username;

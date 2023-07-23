@@ -4,12 +4,15 @@ import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.user.IDaoUser;
 import org.klozevitz.test_menu.model.entities.User;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
-@RestController
+//JWT работает с REST
+@Controller
+@ResponseBody
 @RequestMapping(path = "/service")
 @RequiredArgsConstructor
 public class GenerateBaseController {
