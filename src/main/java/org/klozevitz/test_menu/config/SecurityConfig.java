@@ -30,73 +30,6 @@ public class SecurityConfig {
         return (web) -> web.ignoring().requestMatchers("");
     }
 
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeHttpRequests((requests) -> {
-//                            try {
-//                                requests
-//                                        .requestMatchers("/auth/**").hasRole("MANAGER")
-//                                        .requestMatchers("/event/save", "/new_event").hasAnyRole("ADMIN", "USER")
-//                                        .requestMatchers("/profile", "/profile/update", "/logout", "/profile/activity/*",
-//                                                "/event/participate", "/event/roastOut", "event/filter").authenticated()
-//                                        .requestMatchers("/customer/register", "/register",
-//                                                "/service/generateBase", "/service/tags", "/service/events").anonymous()
-//                                        .requestMatchers("/", "/webjars/**", "/*", "/home/events/onLoadEvents", "/search",
-//                                                "/event/filter").permitAll()
-//                                        .anyRequest().authenticated()
-//                                        .and().sessionManagement((session) -> session
-//                                                .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                                        .authenticationProvider(authenticationProvider)
-//                                        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-//                            } catch (Exception e) {
-//                                throw new RuntimeException(e);
-//                            }
-//                        }
-//                )
-//                .logout().logoutUrl("").addLogoutHandler(logoutHandler)
-//                .logoutSuccessHandler(((request, response, authentication) -> SecurityContextHolder.clearContext()))
-//                        .and()
-//                .formLogin((form) -> form
-//                        .loginPage("/login")
-//                        .failureUrl("/login?error=true")
-//                        .permitAll()
-//                        .defaultSuccessUrl("/")
-//                );
-//        return http.build();
-//    }
-
-
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeHttpRequests((requests) -> requests
-//                        .requestMatchers("/admin", "/admin_customer/*", "/admin_profile/*", "/admin_event/*",
-//                                "/admin_home/*").hasRole("ADMIN")
-//                        .requestMatchers("/event/save", "/new_event").hasAnyRole("ADMIN", "USER")
-//                        .requestMatchers("/profile", "/profile/update", "/logout", "/profile/activity/*",
-//                                "/event/participate", "/event/roastOut", "event/filter").authenticated()
-//                        .requestMatchers("/customer/register", "/register",
-//                                "/service/generateBase", "/service/tags", "/service/events").anonymous()
-//                        .requestMatchers("/", "/webjars/**", "/*", "/home/events/onLoadEvents", "/search",
-//                                "/event/filter").permitAll()
-//                        .anyRequest().authenticated()
-//                        .and().sessionManagement((session) -> session
-//                                .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                        .and().authenticationProvider(authenticationProvider)
-//                        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-//                ).logout().logoutUrl("").addLogoutHandler(logoutHandler)
-//                .logoutSuccessHandler(((request, response, authentication) -> SecurityContextHolder.clearContext()))
-//                .and()
-//                .formLogin((form) -> form
-//                        .loginPage("/login")
-//                        .failureUrl("/login?error=true")
-//                        .permitAll()
-//                        .defaultSuccessUrl("/")
-//                );
-//        return http.build();
-//    }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -107,14 +40,16 @@ public class SecurityConfig {
 //                        .requestMatchers("/profile", "/profile/update", "/logout", "/profile/activity/*",
 //                                "/event/participate", "/event/roastOut", "event/filter").authenticated()
 //                        .requestMatchers("/auth/register").anonymous()
-                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/auth/**", "/service/**").permitAll()
                         .anyRequest().authenticated()
-                ).sessionManagement((session) -> session
+                )
+                .sessionManagement((session) -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .logout().logoutUrl("/logout").addLogoutHandler(logoutHandler)
                 .logoutSuccessHandler(((request, response, authentication) -> SecurityContextHolder.clearContext()));
+//        тут крашит этот код
 //                .and()
 //                .formLogin((form) -> form
 //                        .loginPage("/login")
