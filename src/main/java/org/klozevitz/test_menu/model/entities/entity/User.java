@@ -3,7 +3,7 @@ package org.klozevitz.test_menu.model.entities.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import org.klozevitz.test_menu.model.entities.menu.Dish;
+import org.klozevitz.test_menu.model.entities.Company;
 import org.klozevitz.test_menu.model.entities.role.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,6 +18,7 @@ import java.util.*;
 @Entity
 @Table(name = "user_t")
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -35,6 +36,10 @@ public class User implements UserDetails {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private Profile profile;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 
     @ToString.Include(name = "password")
     private String maskPassword(){

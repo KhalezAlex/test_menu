@@ -14,7 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "ingredients_t")
-public class Ingredients {
+public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,12 +23,12 @@ public class Ingredients {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "gross")
-    private Double gross;
+    @Column(name = "brutto")
+    private Double brutto;
 
-    @Column(name = "net")
-    private String net;
+    @Column(name = "netto")
+    private Double netto;
 
-    @ManyToMany(mappedBy = "ingredientsList")
+    @ManyToMany(mappedBy = "ingredients")
     private Set<Dish> dishes;
 }

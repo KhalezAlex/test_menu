@@ -2,7 +2,7 @@ package org.klozevitz.test_menu.model.dao.ingredients;
 
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.IDaoDB;
-import org.klozevitz.test_menu.model.entities.menu.Ingredients;
+import org.klozevitz.test_menu.model.entities.menu.Ingredient;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,38 +10,38 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class IngredientsService implements IDaoDB<Ingredients> {
+public class IngredientsService implements IDaoDB<Ingredient> {
 
     private final IngredientsRepository ir;
 
 
     @Override
-    public List<Ingredients> findAll() {
-        return (List<Ingredients>) ir.findAll();
+    public List<Ingredient> findAll() {
+        return (List<Ingredient>) ir.findAll();
     }
 
     @Override
-    public Optional<Ingredients> findById(Integer id) {
+    public Optional<Ingredient> findById(Integer id) {
         return ir.findById(id);
     }
 
     @Override
-    public Ingredients save(Ingredients ingredients) {
-        return ir.save(ingredients);
+    public Ingredient save(Ingredient ingredient) {
+        return ir.save(ingredient);
     }
 
     @Override
-    public Ingredients update(Ingredients ingredients) {
-        if(ir.findById(ingredients.getId()).isPresent()){
-            return ir.save(ingredients);
+    public Ingredient update(Ingredient ingredient) {
+        if(ir.findById(ingredient.getId()).isPresent()){
+            return ir.save(ingredient);
         }
         return null;
     }
 
     @Override
-    public Ingredients delete(Integer id) {
-        Ingredients ingredients = findById(id).get();
-        ir.delete(ingredients);
-        return ingredients;
+    public Ingredient delete(Integer id) {
+        Ingredient ingredient = findById(id).get();
+        ir.delete(ingredient);
+        return ingredient;
     }
 }

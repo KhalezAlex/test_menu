@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.IDaoDB;
 import org.klozevitz.test_menu.model.entities.role.Role;
 import org.klozevitz.test_menu.model.entities.entity.User;
+import org.klozevitz.test_menu.security.PBFDK2Encoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.Optional;
 public class UserService implements IDaoDB<User>, IDaoUser {
 
     private final UserRepository userRepository;
-//    private final PasswordEncoder encoder;
+    private final PBFDK2Encoder encoder;
 
     @Override
     public List<User> findAll() {
@@ -28,6 +29,7 @@ public class UserService implements IDaoDB<User>, IDaoUser {
 
     @Override
     public User save(User user) {
+        user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 

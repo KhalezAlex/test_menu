@@ -5,8 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.klozevitz.test_menu.model.entities.entity.Profile;
-import org.klozevitz.test_menu.model.entities.entity.User;
+import org.klozevitz.test_menu.model.entities.Company;
 
 import java.util.Set;
 
@@ -31,9 +30,9 @@ public class Dish {
     @ManyToMany
     @JoinTable(name = "dish_ingredients_t", joinColumns = @JoinColumn(name = "dish_id"),
             inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
-    private Set<Ingredients> ingredientsList;
+    private Set<Ingredient> ingredients;
 
-    @ManyToMany(mappedBy = "dishes")
-    private Set<Profile> profiles;
-
+    @ManyToOne()
+    @JoinColumn(name = "company_id")
+    private Company company;
 }
