@@ -10,5 +10,6 @@ public enum Role {
     MANAGER,
     BARTENDER,
     CHEF_BARTENDER,
-    WAITER;
+    WAITER,
+    ADMIN;
 }

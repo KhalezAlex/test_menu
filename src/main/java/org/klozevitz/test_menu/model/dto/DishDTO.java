@@ -7,8 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.klozevitz.test_menu.model.entities.entity.Profile;
-import org.klozevitz.test_menu.model.entities.menu.Ingredients;
-import org.klozevitz.test_menu.model.entities.entity.User;
+import org.klozevitz.test_menu.model.entities.menu.Ingredient;
 
 import java.util.Set;
 
@@ -21,6 +20,6 @@ public class DishDTO {
     private Integer id;
     private String name;
     private Double price;
-    private Set<Ingredients> ingredientsList;
+    private Set<Ingredient> ingredientList;
     private Set<Profile> profiles;
 }
