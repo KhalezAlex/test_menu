@@ -2,7 +2,7 @@ package org.klozevitz.test_menu.model.dao.profile;
 
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.IDaoDB;
-import org.klozevitz.test_menu.model.entities.entity.Profile;
+import org.klozevitz.test_menu.model.entities.users.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

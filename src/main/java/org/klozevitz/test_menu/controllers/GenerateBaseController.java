@@ -2,7 +2,7 @@ package org.klozevitz.test_menu.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.user.IDaoUser;
-import org.klozevitz.test_menu.model.entities.entity.User;
+import org.klozevitz.test_menu.model.entities.users.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

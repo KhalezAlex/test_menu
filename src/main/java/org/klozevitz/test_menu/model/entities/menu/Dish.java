@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.klozevitz.test_menu.model.entities.Company;
+import org.klozevitz.test_menu.model.entities.users.Company;
 
 import java.util.Set;
 
@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Dish_t")
+@Table(name = "dish_t")
 public class Dish {
 
     @Id
@@ -32,7 +32,10 @@ public class Dish {
             inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
     private Set<Ingredient> ingredients;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
+
+    @ManyToOne
+    private Menu menu;
 }

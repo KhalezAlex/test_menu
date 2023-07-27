@@ -2,7 +2,7 @@ package org.klozevitz.test_menu.model.dao.user.UD;
 
 
 import org.klozevitz.test_menu.model.dao.user.IDaoUser;
-import org.klozevitz.test_menu.model.entities.entity.User;
+import org.klozevitz.test_menu.model.entities.users.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

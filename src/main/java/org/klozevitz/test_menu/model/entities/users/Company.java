@@ -1,11 +1,12 @@
-package org.klozevitz.test_menu.model.entities;
+package org.klozevitz.test_menu.model.entities.users;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.klozevitz.test_menu.model.entities.entity.User;
+import org.klozevitz.test_menu.model.entities.menu.Menu;
+import org.klozevitz.test_menu.model.entities.users.User;
 import org.klozevitz.test_menu.model.entities.menu.Dish;
 
 import java.util.Set;
@@ -24,9 +25,10 @@ public class Company {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "company")
-    private Set<Dish> menu;
+    @OneToOne
+    @JoinColumn(name = "menu_id", referencedColumnName = "id")
+    private Menu menu;
 
     @OneToMany(mappedBy = "company")
-    private Set<User> users;
+    private Set<Profile> employees;
 }

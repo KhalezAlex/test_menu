@@ -2,8 +2,8 @@ package org.klozevitz.test_menu.model.dao.user;
 
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.IDaoDB;
-import org.klozevitz.test_menu.model.entities.role.Role;
-import org.klozevitz.test_menu.model.entities.entity.User;
+import org.klozevitz.test_menu.model.entities.users.Role;
+import org.klozevitz.test_menu.model.entities.users.User;
 import org.klozevitz.test_menu.security.PBFDK2Encoder;
 import org.springframework.stereotype.Service;
 
@@ -61,7 +61,7 @@ public class UserService implements IDaoDB<User>, IDaoUser {
     @Override
     public void saveAdmin(User user) {
         user.setPassword(user.getPassword());
-        user.setRole(Role.MANAGER);
+        user.setRole(Role.ROLE_MANAGER);
         userRepository.save(user);
     }
 

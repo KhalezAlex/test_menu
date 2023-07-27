@@ -11,11 +11,12 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/test_menu
     username: postgres
-    password: rootroot1
+    password: ItsMyLife0203
+#    password: rootroot1
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
 #      ddl-auto: create-drop
     show-sql: true
 

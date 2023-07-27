@@ -1,10 +1,8 @@
-package org.klozevitz.test_menu.model.entities.entity;
+package org.klozevitz.test_menu.model.entities.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import org.klozevitz.test_menu.model.entities.Company;
-import org.klozevitz.test_menu.model.entities.role.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,12 +21,13 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "username")
     private String username;
 
+    @Column(name = "password")
     private String password;
 
-    @Column(name = "user_role")
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -36,10 +35,6 @@ public class User implements UserDetails {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private Profile profile;
-
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
 
     @ToString.Include(name = "password")
     private String maskPassword(){

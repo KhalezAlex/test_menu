@@ -1,7 +1,7 @@
 package org.klozevitz.test_menu.model.dao.user;
 
 import org.klozevitz.test_menu.model.dao.IDaoDB;
-import org.klozevitz.test_menu.model.entities.entity.User;
+import org.klozevitz.test_menu.model.entities.users.User;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;

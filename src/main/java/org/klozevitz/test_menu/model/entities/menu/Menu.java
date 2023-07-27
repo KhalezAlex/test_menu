@@ -1,11 +1,11 @@
-package org.klozevitz.test_menu.model.entities.entity;
+package org.klozevitz.test_menu.model.entities.menu;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.klozevitz.test_menu.model.entities.menu.Dish;
+import org.klozevitz.test_menu.model.entities.users.Company;
 
 import java.util.Set;
 
@@ -14,19 +14,18 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "profile_t")
-public class Profile {
+@Table(name = "menu_t")
+public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String name;
+    @OneToOne(mappedBy = "menu")
+    private Company company;
 
-    private String lastName;
+    @OneToMany
+    private Set<Dish> kitchen;
 
-    private Integer age;
-
-    @OneToOne(mappedBy = "profile")
-    private User user;
-
+    @OneToMany
+    private Set<Dish> bar;
 }

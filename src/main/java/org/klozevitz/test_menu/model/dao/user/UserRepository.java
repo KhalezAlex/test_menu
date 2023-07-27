@@ -1,6 +1,6 @@
 package org.klozevitz.test_menu.model.dao.user;
 
-import org.klozevitz.test_menu.model.entities.entity.User;
+import org.klozevitz.test_menu.model.entities.users.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

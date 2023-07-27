@@ -1,17 +1,16 @@
 package org.klozevitz.test_menu.tests;
 
 import org.junit.jupiter.api.Test;
-import org.klozevitz.test_menu.model.entities.role.Role;
-import org.klozevitz.test_menu.model.entities.entity.User;
+import org.klozevitz.test_menu.model.entities.users.Role;
+import org.klozevitz.test_menu.model.entities.users.User;
 
 public class CreateUser {
     @Test
-    void createUser(){
-        User user = User.builder()
+    User create_createUserWithManagerRole_User(){
+        return User.builder()
                 .username("user1")
                 .password("user")
-                .role(Role.MANAGER)
+                .role(Role.ROLE_MANAGER)
                 .build();
-        System.out.println(user);
     }
 }
