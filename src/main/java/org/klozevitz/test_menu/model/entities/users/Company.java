@@ -25,10 +25,16 @@ public class Company {
     @Column(name = "name")
     private String name;
 
-    @OneToOne
+    @Column(name = "premium")
+    private Boolean premium;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private User user;
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "menu_id", referencedColumnName = "id")
     private Menu menu;
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private Set<Profile> employees;
 }
