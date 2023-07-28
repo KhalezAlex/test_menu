@@ -28,6 +28,11 @@ public class Company {
     @Column(name = "premium")
     private Boolean premium;
 
+    public Company(String name, User user) {
+        this.name = name;
+        this.user = user;
+    }
+
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 

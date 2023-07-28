@@ -30,6 +30,7 @@ public class UserService implements IDaoDB<User>, IDaoUser {
     @Override
     public User save(User user) {
         user.setPassword(encoder.encode(user.getPassword()));
+        user.setRole(Role.ROLE_COMPANY);
         return userRepository.save(user);
     }
 
