@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/pages/**");
+        return (web) -> web.ignoring().requestMatchers("/*.css");
     }
 
     @Bean
@@ -29,13 +29,14 @@ public class SecurityConfig {
 //                        .requestMatchers("/auth/register").anonymous()
                         .requestMatchers("/auth/**", "/service/**", "/").permitAll()
                         .anyRequest().authenticated()
+                )
+                .formLogin((form) -> form
+                        .loginPage("/login")
+                        .failureUrl("/login?error=true")
+                        .permitAll()
+                        .defaultSuccessUrl("/")
+
                 );
-//                .formLogin((form) -> form
-//                        .loginPage("/login")
-//                        .failureUrl("/login?error=true")
-//                        .permitAll()
-//                        .defaultSuccessUrl("/")
-//                );
         return http.build();
     }
 }

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class UserService implements IDaoDB<User>, IDaoUser {
+public class UserService implements IDaoUser {
 
     private final UserRepository userRepository;
     private final PBFDK2Encoder encoder;
