@@ -1,4 +1,4 @@
-package org.klozevitz.test_menu.model.dao.ingredients;
+package org.klozevitz.test_menu.model.dao.ingredient;
 
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.IDaoDB;

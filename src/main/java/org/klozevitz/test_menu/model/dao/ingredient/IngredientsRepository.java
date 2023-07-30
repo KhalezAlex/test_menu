@@ -1,4 +1,4 @@
-package org.klozevitz.test_menu.model.dao.ingredients;
+package org.klozevitz.test_menu.model.dao.ingredient;
 
 import org.klozevitz.test_menu.model.entities.menu.Ingredient;
 import org.springframework.data.repository.CrudRepository;

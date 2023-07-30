@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 @Service
 @RequiredArgsConstructor
-public class CompanyService implements IDaoDB<Company> {
+public class CompanyService implements IDaoCompany {
 
     private final CompanyRepository repository;
 
@@ -41,5 +41,10 @@ public class CompanyService implements IDaoDB<Company> {
         Company company = findById(id).get();
         repository.delete(company);
         return company;
+    }
+
+    @Override
+    public Company findCompanyByName(String name) {
+        return null;
     }
 }
