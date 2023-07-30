@@ -27,6 +27,10 @@ public class Dish {
     @Column(name = "price")
     private Double price;
 
+    //Картинки блюд
+    @Lob
+    private String upic;
+
     @ManyToMany
     @JoinTable(name = "dish_ingredients_t", joinColumns = @JoinColumn(name = "dish_id"),
             inverseJoinColumns = @JoinColumn(name = "ingredient_id"))

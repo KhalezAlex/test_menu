@@ -16,6 +16,7 @@ import java.util.Set;
 @Entity
 @Table(name = "menu_t")
 public class Menu {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
