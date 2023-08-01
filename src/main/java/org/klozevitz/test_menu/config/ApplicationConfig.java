@@ -3,6 +3,7 @@ package org.klozevitz.test_menu.config;
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.user.UD.DBUserDetailsService;
 import org.klozevitz.test_menu.model.dao.user.UserRepository;
+import org.klozevitz.test_menu.security.PBFDK2Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,11 +26,7 @@ import javax.sql.DataSource;
 public class ApplicationConfig {
 
     private final UserRepository userRepository;
-    @Bean
-    public PasswordEncoder encoder() {
-// стандартный кодировщик Spring
-        return new BCryptPasswordEncoder();
-    }
+    private final PBFDK2Encoder encoder;
 
     @Bean
     public UserDetailsService userDetailsService(){
@@ -45,20 +42,20 @@ public class ApplicationConfig {
         return authProvider;
     }
 
-//    private final DataSource dataSource;
+    private final DataSource dataSource;
 
-//    @Bean
-//    public UserDetailsManager users(HttpSecurity http) throws Exception {
-//        AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManagerBuilder.class)
-//                .userDetailsService(userDetailsService())
-//                .passwordEncoder(encoder())
-//                .and()
-//                .authenticationProvider(authenticationProvider())
-//                .build();
-//        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
-//        jdbcUserDetailsManager.setAuthenticationManager(authenticationManager);
-//        return jdbcUserDetailsManager;
-//    }
+    @Bean
+    public UserDetailsManager users(HttpSecurity http) throws Exception {
+        AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManagerBuilder.class)
+                .userDetailsService(userDetailsService())
+                .passwordEncoder(encoder)
+                .and()
+                .authenticationProvider(authenticationProvider())
+                .build();
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+        jdbcUserDetailsManager.setAuthenticationManager(authenticationManager);
+        return jdbcUserDetailsManager;
+    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {

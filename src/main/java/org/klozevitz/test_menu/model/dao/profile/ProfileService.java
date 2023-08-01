@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProfileService implements IDaoDB<Profile> {
+public class ProfileService implements IDaoProfile {
     private final ProfileRepository repository;
 
     @Override
