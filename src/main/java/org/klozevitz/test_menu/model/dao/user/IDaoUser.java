@@ -12,6 +12,7 @@ public interface IDaoUser extends IDaoDB<User> {
     Optional<User> findUserByName(String name);
     User findUserByUsername(String name);
     void saveAdmin(User user);
-    User addRole(Integer userId, String role);
+    User saveEmployee(User user, String role);
+
 
 }

@@ -35,6 +35,10 @@ public class Profile {
     @JoinColumn(name = "company_id")
     private Company company;
 
+    public Profile(Company company) {
+        this.company = company;
+    }
+
     //список подчиненных
     @OneToMany
     private Set<Profile> subs;
