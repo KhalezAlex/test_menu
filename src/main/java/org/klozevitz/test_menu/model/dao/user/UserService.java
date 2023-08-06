@@ -30,7 +30,7 @@ public class UserService implements IDaoUser {
     @Override
     public User save(User user) {
         user.setPassword(encoder.encode(user.getPassword()));
-        user.setRole(Role.ROLE_COMPANY);
+        user.setRole(Role.COMPANY);
         return userRepository.save(user);
     }
 
@@ -38,17 +38,17 @@ public class UserService implements IDaoUser {
     public User saveEmployee(User user, String role){
         user.setPassword(encoder.encode(user.getPassword()));
         if(role.equals("Manager")) {
-            user.setRole(Role.ROLE_MANAGER);
+            user.setRole(Role.MANAGER);
         } else if(role.equals("Chef")) {
-            user.setRole(Role.ROLE_CHEF);
+            user.setRole(Role.CHEF);
         } else if(role.equals("HEAD_BARTENDER")){
-            user.setRole(Role.ROLE_HEAD_BARTENDER);
+            user.setRole(Role.HEAD_BARTENDER);
         } else if(role.equals("WAITER")){
-            user.setRole(Role.ROLE_WAITER);
+            user.setRole(Role.WAITER);
         } else if(role.equals("COOK")){
-            user.setRole(Role.ROLE_COOK);
+            user.setRole(Role.COOK);
         } else if(role.equals("BARTENDER")){
-            user.setRole(Role.ROLE_BARTENDER);
+            user.setRole(Role.BARTENDER);
         }
         return userRepository.save(user);
     }
@@ -81,7 +81,7 @@ public class UserService implements IDaoUser {
     @Override
     public void saveAdmin(User user) {
         user.setPassword(user.getPassword());
-        user.setRole(Role.ROLE_MANAGER);
+        user.setRole(Role.MANAGER);
         userRepository.save(user);
     }
 }

@@ -17,6 +17,25 @@ body nav {
   background-color: #d0e6cc;
 }
 
+body .content form {
+  width: 300px;
+  height: 391px;
+  background-color: #ffffff;
+}
+
+body .content form input {
+  width: 240px;
+  height: 35px;
+  background-color: #ffffff;
+  border: 2px solid #16a086;
+}
+
+body .content form button {
+  width: 138px;
+  height: 35px;
+  border-style: none;
+}
+
 body nav ul > a, body nav ul button {
   height: 100%;
   text-align: center;
@@ -78,7 +97,24 @@ body .content {
   height: 1100px;
   width: 60%;
   min-width: 660px;
-  margin-top: 66px;
   margin-left: 20%;
   background-color: aliceblue;
+}
+body .content form {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+body .content form > * {
+  margin: auto;
+}
+.hidden {
+  display: none;
 }

@@ -1,0 +1,70 @@
+@import "variables.scss";
+
+body {
+  padding: 0;
+  margin: 0;
+  min-width: $body_minwidth;
+  nav {
+    @extend %header_tpl;
+    ul {
+      display: flex;
+      height: 100%;
+      margin: 0;
+      justify-content: space-around;
+      list-style: none;
+      padding-left: 5%;
+      padding-right: 5%;
+      li {
+        margin: 10px 10px;
+        flex-wrap: wrap;
+        align-content: center;
+        display: flex;
+        height: 100%;
+        margin-top: 0;
+      }
+      button {
+        @extend %header_button_tpl;
+        background-color: $wrapper_color;
+        color: $header_font_color;
+      }
+      > a {
+        @extend %header_button_tpl;
+        padding-left: 3px;
+        padding-right: 3px;
+        background-color: $wrapper_color;
+        text-decoration: none;
+        margin-right: 0;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  .content {
+    margin-top: 0.06 * $body_minwidth;
+    height: 1100px;
+    width: 60%;
+    min-width: 0.6 * $body_minwidth;
+    margin-left: 20%;
+    background-color: aliceblue;
+    form {
+      @extend %form_log_reg_tpl;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      > * {
+        margin: auto;
+      }
+      input {
+        @extend %input_tpl;
+      }
+      button {
+        @extend %button_tpl;
+      }
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
