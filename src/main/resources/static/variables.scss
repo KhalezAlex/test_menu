@@ -1,14 +1,13 @@
 // компоненты окон
-$wrapper_width: 1100px;
+$body_minwidth: 1100px;
 
 //цвета
 $header_color: #1bbc9b;
 $header_font_color: #3c3c3c;
-$active: #e84c3d;
+$active_color: #e84c3d;
 $wrapper_color: #d0e6cc;
-$grey: #bec3c7;
-$form: #ffffff;
-$border: #16a086;
+$form_background_color: #ffffff;
+$border_color: #16a086;
 
 //шрифты
 @font-face {
@@ -27,21 +26,18 @@ $border: #16a086;
 %header_tpl {
   position: fixed;
   z-index: 10;
-  left: 30%;
+  left: 20%;
   top: 0;
   width: 60%;
-  min-width: 0.6 * $wrapper_width;
-  height: 0.06 * $wrapper_width;
+  min-width: 0.6 * $body_minwidth;
+  height: 0.06 * $body_minwidth;
   background-color: $wrapper_color;
-  margin: 0 auto;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
+  // margin: 0 auto;
 }
 
 // шаблон wrapper
 %wrapper_tpl {
-  width: $wrapper_width;
+  width: $body_minwidth;
   background-color: #e3f0cd;
 }
 
@@ -51,15 +47,15 @@ $border: #16a086;
 %form_log_reg_tpl {
   width: 300px;
   height: 391px;
-  background-color: $form;
+  background-color: $form_background_color;
 }
 
 //шаблон для всех инпутов/селектов в проекте
 %input_tpl {
   width: 240px;
   height: 35px;
-  background-color: $form;
-  border: 2px solid $border;
+  background-color: $form_background_color;
+  border: 2px solid $border_color;
 }
 
 //шаблон для всех кнопок в проекте

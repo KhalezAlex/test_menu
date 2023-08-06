@@ -4,12 +4,12 @@ import lombok.Getter;
 
 @Getter
 public enum Role {
-    ROLE_ADMIN,
-    ROLE_COMPANY,
-    ROLE_MANAGER,
-    ROLE_WAITER,
-    ROLE_CHEF,
-    ROLE_COOK,
-    ROLE_HEAD_BARTENDER,
-    ROLE_BARTENDER;
+    ADMIN,
+    COMPANY,
+    MANAGER,
+    WAITER,
+    CHEF,
+    COOK,
+    HEAD_BARTENDER,
+    BARTENDER;
 }

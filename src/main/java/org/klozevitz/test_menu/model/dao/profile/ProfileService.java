@@ -36,11 +36,7 @@ public class ProfileService implements IDaoProfile {
         if (updated == null){
             return null;
         }
-//        updated.setAge(profile.getAge());
-//        updated.setCity(profile.getCity());
-//        updated.setPhone(profile.getPhone());
-//        updated.setName(profile.getName());
-//        updated.setUpic(profile.getUpic());
+        updated.setCompany(profile.getCompany());
         return updated;
     }
 
