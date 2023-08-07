@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import "variables";
 
 body {
   padding: 0;
@@ -40,11 +40,14 @@ body {
     }
   }
   .content {
+    // margin-top: 0.06 * $body_minwidth;
+    // height: 1100px;
+    // width: 60%;
+    // min-width: 0.6 * $body_minwidth;
+    // margin-left: 20%;
+    // background-color: aliceblue;
     margin-top: 0.06 * $body_minwidth;
     height: 1100px;
-    width: 60%;
-    min-width: 0.6 * $body_minwidth;
-    margin-left: 20%;
     background-color: aliceblue;
     form {
       @extend %form_log_reg_tpl;

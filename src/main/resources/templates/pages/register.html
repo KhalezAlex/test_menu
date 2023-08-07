@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,25 +8,7 @@
     <link rel="stylesheet" href="/styles/login.css" />
   </head>
   <body>
-    <nav>
-      <ul>
-        <li>
-          <button onclick="document.location = 'index.html'">домой</button>
-        </li>
-        <li>
-          <button>услуги</button>
-        </li>
-        <li>
-          <button>наши партнеры</button>
-        </li>
-        <li>
-          <button>админ</button>
-        </li>
-        <li>
-          <button onclick="document.location = 'login.html'">войти</button>
-        </li>
-      </ul>
-    </nav>
+  <th:block th:insert="~{layouts/header.html :: layout_header}"></th:block>
     <div class="content">
       <h1>Registration</h1>
       <form th:method="post" th:action="@{/register/company}">

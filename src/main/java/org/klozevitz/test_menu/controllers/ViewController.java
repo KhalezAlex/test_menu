@@ -3,14 +3,28 @@ package org.klozevitz.test_menu.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
-@RequestMapping(path = "/v1")
+@RequestMapping(path = "/")
 public class ViewController {
-    @GetMapping("/home")
+    @GetMapping("/")
     public String home() {
-        System.out.println("FK OFF");
         return "pages/home";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "pages/login";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "pages/register";
+    }
+
+//    @GetMapping("/login")
+//    public String login() {
+//        System.out.println("Login");
+//        return "login";
+//    }
 }

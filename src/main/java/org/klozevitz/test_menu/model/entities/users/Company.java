@@ -31,6 +31,7 @@ public class Company {
     public Company(String name, User user) {
         this.name = name;
         this.user = user;
+        this.premium = false;
     }
 
     @OneToOne(cascade = CascadeType.ALL)

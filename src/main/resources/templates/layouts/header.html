@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Header</title>
+    <link rel="stylesheet" href="../../static/styles/null.css" />
+    <link rel="stylesheet" href="../../static/styles/header.css" />
 </head>
 <body>
     <nav th:fragment="layout_header">
         <ul>
             <li>
-                <button>домой</button>
+                <button onclick="window.location.href = '/'">домой</button>
             </li>
             <li>
                 <button>услуги</button>
@@ -20,7 +22,7 @@
                 <button>админ</button>
             </li>
             <li>
-                <button>войти</button>
+                <button onclick="window.location.href = '/login'">войти</button>
             </li>
         </ul>
     </nav>

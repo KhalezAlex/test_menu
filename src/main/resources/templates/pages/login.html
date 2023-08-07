@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/styles/null.css" />
+    <link rel="stylesheet" href="/styles/login.css" />
+</head>
+<body>
+<div class="wrapper">
+    <th:block th:insert="~{layouts/header.html :: layout_header}"></th:block>
+    <div class="content">
+        <h1>Registration</h1>
+        <form th:method="post" th:action="@{/login}">
+            <div>
+                <input type="text" placeholder="логин" name="username"/>
+            </div>
+            <div>
+                <input type="password" placeholder="пароль" name="password"/>
+                <span class="hidden">Ошибка: неверные логин или пароль</span>
+            </div>
+            <a href="/register">Еще не зарегистрированы?</a>
+            <button>submit</button>
+        </form>
+    </div>
+    <div class="footer"></div>
+</div>
+</body>
+</html>

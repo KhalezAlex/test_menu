@@ -1,5 +1,5 @@
 // компоненты окон
-$body_minwidth: 1100px;
+$body_minwidth: 1200px;
 
 //цвета
 $header_color: #1bbc9b;
@@ -22,23 +22,28 @@ $border_color: #16a086;
 
 // шаблоны для логических модулей
 
+%wrapper_tpl {
+  max-width: $body_minwidth;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+// @media (max-width: 1200px) {
+//   $body_minwidth: 1000px;
+// }
+// @media (max-width: 992px) {
+//   $body_minwidth: 700px;
+// }
+
 // шаблон header
 %header_tpl {
   position: fixed;
   z-index: 10;
-  left: 20%;
+  left: 0;
   top: 0;
-  width: 60%;
-  min-width: 0.6 * $body_minwidth;
+  width: 100%;
   height: 0.06 * $body_minwidth;
   background-color: $wrapper_color;
-  // margin: 0 auto;
-}
-
-// шаблон wrapper
-%wrapper_tpl {
-  width: $body_minwidth;
-  background-color: #e3f0cd;
 }
 
 //шаблоны для форм

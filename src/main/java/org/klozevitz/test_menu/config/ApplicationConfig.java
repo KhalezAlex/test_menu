@@ -26,7 +26,11 @@ import javax.sql.DataSource;
 public class ApplicationConfig {
 
     private final UserRepository userRepository;
-    private final PBFDK2Encoder encoder;
+    @Bean
+    public PasswordEncoder encoder() {
+// стандартный кодировщик Spring
+        return new BCryptPasswordEncoder();
+    }
 
     @Bean
     public UserDetailsService userDetailsService(){
@@ -42,20 +46,20 @@ public class ApplicationConfig {
         return authProvider;
     }
 
-    private final DataSource dataSource;
+//    private final DataSource dataSource;
 
-    @Bean
-    public UserDetailsManager users(HttpSecurity http) throws Exception {
-        AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManagerBuilder.class)
-                .userDetailsService(userDetailsService())
-                .passwordEncoder(encoder)
-                .and()
-                .authenticationProvider(authenticationProvider())
-                .build();
-        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
-        jdbcUserDetailsManager.setAuthenticationManager(authenticationManager);
-        return jdbcUserDetailsManager;
-    }
+//    @Bean
+//    public UserDetailsManager users(HttpSecurity http) throws Exception {
+//        AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManagerBuilder.class)
+//                .userDetailsService(userDetailsService())
+//                .passwordEncoder(encoder())
+//                .and()
+//                .authenticationProvider(authenticationProvider())
+//                .build();
+//        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+//        jdbcUserDetailsManager.setAuthenticationManager(authenticationManager);
+//        return jdbcUserDetailsManager;
+//    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
