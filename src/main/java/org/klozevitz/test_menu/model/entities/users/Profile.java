@@ -39,6 +39,11 @@ public class Profile {
         this.company = company;
     }
 
+    public Profile(Company company, Profile chief) {
+        this.company = company;
+        this.chief = chief;
+    }
+
     //список подчиненных
     @OneToMany
     private Set<Profile> subs;
