@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -30,25 +31,19 @@ public class UserService implements IDaoUser {
     @Override
     public User save(User user) {
         user.setPassword(encoder.encode(user.getPassword()));
-        user.setRole(Role.COMPANY);
+        user.setRole(Role.ROLE_COMPANY);
+        System.out.println(user);
         return userRepository.save(user);
     }
 
     @Override
     public User saveEmployee(User user, String role){
         user.setPassword(encoder.encode(user.getPassword()));
-        if(role.equalsIgnoreCase("Manager")) {
-            user.setRole(Role.MANAGER);
-        } else if(role.equalsIgnoreCase("Chef")) {
-            user.setRole(Role.CHEF);
-        } else if(role.equalsIgnoreCase("HEAD_BARTENDER")){
-            user.setRole(Role.HEAD_BARTENDER);
-        } else if(role.equalsIgnoreCase("Waiter")){
-            user.setRole(Role.WAITER);
-        } else if(role.equalsIgnoreCase("COOK")){
-            user.setRole(Role.COOK);
-        } else if(role.equalsIgnoreCase("BARTENDER")){
-            user.setRole(Role.BARTENDER);
+        if (Stream.of(Role.values()).anyMatch(r -> r.toString().equalsIgnoreCase(role))) {
+            user.setRole(Stream.of(Role.values())
+                    .filter(r -> r.toString().equalsIgnoreCase(role))
+                    .findFirst()
+                    .get());
         }
         return userRepository.save(user);
     }
@@ -81,7 +76,7 @@ public class UserService implements IDaoUser {
     @Override
     public void saveAdmin(User user) {
         user.setPassword(user.getPassword());
-        user.setRole(Role.MANAGER);
+        user.setRole(Role.ROLE_MANAGER);
         userRepository.save(user);
     }
 }

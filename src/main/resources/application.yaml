@@ -27,3 +27,5 @@ jwt:
       secret: FZK2DZ82odqS13e8aENggaMbb_fAkl-nJL4AEV8X43g
       iteration: 64
       keylength: 256
+
+#debug: true

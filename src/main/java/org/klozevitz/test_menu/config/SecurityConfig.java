@@ -26,8 +26,10 @@ public class SecurityConfig {
 //                        .requestMatchers("/event/save", "/new_event").hasAnyRole("ADMIN", "USER")
 //                        .requestMatchers("/profile", "/profile/update", "/logout", "/profile/activity/*",
 //                                "/event/participate", "/event/roastOut", "event/filter").authenticated()
-                        .requestMatchers("/register/**").anonymous()
-                        .requestMatchers("/auth/**", "/service/**", "/", "/register/**").permitAll()
+                                .requestMatchers("/register/employee").hasRole("COMPANY")
+                                .requestMatchers("/logout").authenticated()
+                        .requestMatchers("/register/company").anonymous()
+                        .requestMatchers("/auth/**", "/service/**", "/").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
@@ -35,7 +37,6 @@ public class SecurityConfig {
                         .failureUrl("/login?error=true")
                         .permitAll()
                         .defaultSuccessUrl("/")
-
                 );
         return http.build();
     }

@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -42,6 +43,7 @@ public class Profile {
     public Profile(Company company, Profile chief) {
         this.company = company;
         this.chief = chief;
+        this.subs = new HashSet<>();
     }
 
     //список подчиненных
