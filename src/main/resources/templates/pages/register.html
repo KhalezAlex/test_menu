@@ -14,15 +14,15 @@
       <form th:method="post" th:action="@{/register/company}">
         <div>
           <input type="text" placeholder="логин" name="username"/>
-<!--          <br />-->
-          <span class="hidden"
-            >Ошибка: неверный формат логина или логин занят</span
-          >
+          <br />
+          <span th:if="${error != null && error == 'login'}">
+            Ошибка: неверный формат логина или логин занят</span>
         </div>
         <div>
           <input type="text" placeholder="название компании" name="companyName"/>
           <br />
-          <span class="hidden">Ошибка: введите название компании</span>
+          <span th:if="${error != null && error == 'company_name'}">
+            Ошибка: введите название компании</span>
         </div>
         <div>
           <input type="password" placeholder="пароль" name="password"/>

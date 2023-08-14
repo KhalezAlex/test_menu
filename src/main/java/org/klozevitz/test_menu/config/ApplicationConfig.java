@@ -26,11 +26,6 @@ import javax.sql.DataSource;
 public class ApplicationConfig {
 
     private final UserRepository userRepository;
-    @Bean
-    public PasswordEncoder encoder() {
-// стандартный кодировщик Spring
-        return new BCryptPasswordEncoder();
-    }
 
     @Bean
     public UserDetailsService userDetailsService(){

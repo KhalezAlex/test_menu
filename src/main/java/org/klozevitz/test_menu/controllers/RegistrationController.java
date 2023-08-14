@@ -23,6 +23,7 @@ public class RegistrationController {
 
     private final IDaoUser userDAO;
     private final IDaoCompany companyDAO;
+
     private final IDaoProfile profileDAO;
 
     @GetMapping("/company")
@@ -50,36 +51,69 @@ public class RegistrationController {
     @PostMapping("/employee")
     @PreAuthorize("hasRole('COMPANY')")
     public String registerPerson(@RequestParam String username, @RequestParam String password,
-                                  RedirectAttributes ra, String role){
+                                  RedirectAttributes ra, String role, Integer id){
         //создает менеджера, шефов
-        userDAO.saveEmployee(new User(username, password), role);
+        if (userDAO.findUserByUsername(username) != null) {
+            ra.addFlashAttribute("error", "login");
+            return "redirect:/register";
+        }
+        /*При создании работника передаётся логин, пароль, роль, ID получаем через фронт,
+         он должен быть равен ID пользователя, тк связь с компанией идёт через него.
+         И далее в профиль передаётся компания по найденой связи*/
+        userDAO.saveEmployee(new User(username, password, new Profile(companyDAO.findCompanyByUserId(id))), role);
         return null;
     }
 
     @PostMapping("/manager")
     @PreAuthorize("hasRole('MANAGER')")
     public String registerManager(@RequestParam String username, @RequestParam String password,
-                                   RedirectAttributes ra, String role){
+                                   RedirectAttributes ra, String role, Integer id, Integer chefId){
         //создает официаетов, шефов
-        userDAO.saveEmployee(new User(username, password), role);
+        if (userDAO.findUserByUsername(username) != null) {
+            ra.addFlashAttribute("error", "login");
+            return "redirect:/register";
+        }
+        //Добавить связь с менеджером в профиле официанта
+        /*Тут так же похожая механика, делаем проверку на роли, тк необходимо связь с начальником.
+        Но ID тут берётся из профиля потому что связь уже есть с компанией
+        chefId = Id профайла Менеджера*/
+        if  (role.equalsIgnoreCase("Waiter")) {
+            userDAO.saveEmployee(new User(username, password, new Profile(companyDAO.findById(id).get(),
+                    profileDAO.findById(chefId).get())), role);
+        }
+        else {
+            userDAO.saveEmployee(new User(username, password, new Profile(companyDAO.findById(id).get())), role);
+        }
         return null;
     }
 
     @PostMapping("/chef")
     @PreAuthorize("hasRole('CHEF')")
     public String registerChef(@RequestParam String username, @RequestParam String password,
-                                RedirectAttributes ra, String role){
+                                RedirectAttributes ra, String role, Integer id, Integer chefId){
         //создает повара
-        userDAO.saveEmployee(new User(username, password), role);
+        if (userDAO.findUserByUsername(username) != null) {
+            ra.addFlashAttribute("error", "login");
+            return "redirect:/register";
+        }
+        //Добавить связь с шефом в профиле
+        userDAO.saveEmployee(new User(username, password, new Profile(companyDAO.findById(id).get(),
+                profileDAO.findById(chefId).get())), role);
         return null;
     }
 
     @PostMapping("/bartender")
     @PreAuthorize("hasRole('BARTENDER')")
     public String registerBartender(@RequestParam String username, @RequestParam String password,
-                                     RedirectAttributes ra, String role){
+                                     RedirectAttributes ra, String role, Integer id, Integer chefId){
         //создает барменов
-        userDAO.saveEmployee(new User(username, password), role);
+        if (userDAO.findUserByUsername(username) != null) {
+            ra.addFlashAttribute("error", "login");
+            return "redirect:/register";
+        }
+        //Добавить связь с шефом в профиле
+        userDAO.saveEmployee(new User(username, password, new Profile(companyDAO.findById(id).get(),
+                profileDAO.findById(chefId).get())), role);
         return null;
     }
 }

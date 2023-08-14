@@ -47,6 +47,11 @@ public class CompanyService implements IDaoCompany {
         return repository.findByName(name);
     }
 
+    @Override
+    public Company findCompanyByUserId(Integer id) {
+        return repository.findCompanyByUserId(id);
+    }
+
 //    @Override
 //    public Integer findCompanyIdByName(String name) {
 //        return repository.findIdByName(name);

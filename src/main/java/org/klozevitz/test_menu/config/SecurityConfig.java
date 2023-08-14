@@ -37,12 +37,6 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/")
 
                 );
-//                .formLogin((form) -> form
-//                        .loginPage("/login")
-//                        .failureUrl("/login?error=true")
-//                        .permitAll()
-//                        .defaultSuccessUrl("/")
-//                );
         return http.build();
     }
 }
