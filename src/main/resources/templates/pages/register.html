@@ -16,8 +16,7 @@
           <input type="text" placeholder="логин" name="username"/>
           <br />
           <span th:if="${error != null && error == 'login'}">
-            Ошибка: неверный формат логина или логин занят</span
-          >
+            Ошибка: неверный формат логина или логин занят</span>
         </div>
         <div>
           <input type="text" placeholder="название компании" name="companyName"/>
@@ -28,7 +27,7 @@
         <div>
           <input type="password" placeholder="пароль" name="password"/>
           <input type="password" placeholder="повторно введите пароль" />
-          <br />
+<!--          <br />-->
           <span class="hidden">Ошибка: пароли не совпадают</span>
         </div>
         <button>submit</button>
