@@ -21,10 +21,4 @@ public class ViewController {
     public String register() {
         return "pages/register";
     }
-
-//    @GetMapping("/login")
-//    public String login() {
-//        System.out.println("Login");
-//        return "login";
-//    }
 }
