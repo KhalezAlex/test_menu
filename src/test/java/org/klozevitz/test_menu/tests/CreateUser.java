@@ -10,7 +10,7 @@ public class CreateUser {
         return User.builder()
                 .username("user1")
                 .password("user")
-                .role(Role.ROLE_MANAGER)
+                .role(Role.MANAGER)
                 .build();
     }
 }

@@ -25,6 +25,7 @@ public class ViewController {
     public String home() {
         System.out.println("mapping \"home\"");
         System.out.println(SecurityContextHolder.getContext().getAuthentication());
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
         return "pages/home";
     }
 
@@ -40,9 +41,6 @@ public class ViewController {
 
     @GetMapping("/register/chiefs")
     public String chiefs(Model model) {
-        System.out.println("/register/chiefs");
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
-        System.out.println(userDAO.findUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
         return "pages/register/chiefs";
     }
 

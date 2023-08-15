@@ -31,16 +31,16 @@ public class UserService implements IDaoUser {
     @Override
     public User save(User user) {
         user.setPassword(encoder.encode(user.getPassword()));
-        user.setRole(Role.ROLE_COMPANY);
+        user.setRole(Role.COMPANY);
         System.out.println(user);
         return userRepository.save(user);
     }
 
     @Override
-    public User saveEmployee(User user, String role){
+    public User saveEmployee(User user, String role) {
         user.setPassword(encoder.encode(user.getPassword()));
-        if (Stream.of(Role.values()).anyMatch(r -> r.toString().equalsIgnoreCase(role))) {
-            user.setRole(Stream.of(Role.values())
+        if (Role.stream().anyMatch(r -> r.toString().equalsIgnoreCase(role))) {
+            user.setRole(Role.stream()
                     .filter(r -> r.toString().equalsIgnoreCase(role))
                     .findFirst()
                     .get());
@@ -50,7 +50,7 @@ public class UserService implements IDaoUser {
 
     @Override
     public User update(User user) {
-        if(userRepository.findById(user.getId()).isPresent()) {
+        if (userRepository.findById(user.getId()).isPresent()) {
             return userRepository.save(user);
         }
         return null;
@@ -69,14 +69,14 @@ public class UserService implements IDaoUser {
     }
 
     @Override
-    public User findUserByUsername(String name){
+    public User findUserByUsername(String name) {
         return userRepository.findUserByUsername(name);
     }
 
     @Override
     public void saveAdmin(User user) {
         user.setPassword(user.getPassword());
-        user.setRole(Role.ROLE_MANAGER);
+        user.setRole(Role.MANAGER);
         userRepository.save(user);
     }
 }
