@@ -27,6 +27,7 @@ public class SecurityConfig {
 //                        .requestMatchers("/profile", "/profile/update", "/logout", "/profile/activity/*",
 //                                "/event/participate", "/event/roastOut", "event/filter").authenticated()
                                 .requestMatchers("/register/chiefs").hasRole("COMPANY")
+                                .requestMatchers("/register/managerSubs").hasRole("MANAGER")
                                 .requestMatchers("/logout").authenticated()
                         .requestMatchers("/register/company").anonymous()
                         .requestMatchers("/auth/**", "/service/**", "/").permitAll()

@@ -43,12 +43,11 @@ public class RegistrationController {
      * И далее в профиль передаётся компания по найденой связи
      */
     @PostMapping("/chiefs")
-    @PreAuthorize("hasRole('COMPANY')")
     public String chiefs(@RequestParam String username, @RequestParam String password,
                            @RequestParam String role, @RequestParam Integer id, RedirectAttributes ra) {
         if (userDAO.findUserByUsername(username) != null) {
             ra.addFlashAttribute("error", "login");
-            return "redirect:/register/employee";
+            return "redirect:/register/chiefs";
         }
         userDAO.saveEmployee(new User(username, password, new Profile(companyDAO.findCompanyByUserId(id))), role);
         return "pages/home";
@@ -60,13 +59,12 @@ public class RegistrationController {
      * chefId = Id профайла Менеджера
      */
     @PostMapping("/managerSubs")
-    @PreAuthorize("hasRole('MANAGER')")
-    public String managerSubs(@RequestParam String username, @RequestParam String password,
-                              RedirectAttributes ra, String role, Integer id, Integer chefId) {
+    public String managerSubs(@RequestParam String username, @RequestParam String password, RedirectAttributes ra,
+                              @RequestParam String role, @RequestParam Integer id, @RequestParam Integer chefId) {
         if (userDAO.findUserByUsername(username) != null || companyDAO.findById(id).isEmpty()
                 || profileDAO.findById(chefId).isEmpty()) {
             ra.addFlashAttribute("error", "login");
-            return "redirect:/register";
+            return "redirect:/register/managerSubs";
         }
         if (role.equalsIgnoreCase("Waiter")) {
             userDAO.saveEmployee(new User(username, password,
@@ -74,11 +72,10 @@ public class RegistrationController {
         } else {
             userDAO.saveEmployee(new User(username, password, new Profile(companyDAO.findById(id).get())), role);
         }
-        return null;
+        return "pages/home";
     }
 
     @PostMapping("/chefSubs")
-    @PreAuthorize("hasRole('CHEF')")
     public String chefSubs(@RequestParam String username, @RequestParam String password,
                            RedirectAttributes ra, String role, Integer id, Integer chefId) {
         //создает повара
@@ -93,7 +90,6 @@ public class RegistrationController {
     }
 
     @PostMapping("/bartenderSubs")
-    @PreAuthorize("hasRole('BARTENDER')")
     public String bartenderSubs(@RequestParam String username, @RequestParam String password,
                                 RedirectAttributes ra, String role, Integer id, Integer chefId) {
         //создает барменов

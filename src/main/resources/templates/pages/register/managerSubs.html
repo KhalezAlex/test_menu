@@ -2,12 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Register chiefs</title>
+    <title>Register manager subs</title>
 </head>
 <body>
-<form method="post" th:action="@{/register/chiefs}" >
+<form method="post" th:action="@{/register/managerSubs}">
 
-    <input type="number" th:value="${chiefs}" name="id" hidden>
+    <input type="number" th:value="${manager.profile.company.id}" name="id" hidden>
+    <input type="number" th:value="${manager.profile.id}" name="chefId" hidden>
 
     <input type="text" placeholder="Логин" name="username">
     <span th:if="${error != null && error == 'login'}">
@@ -15,7 +16,7 @@
 
     <input type="password" placeholder="Пароль" name="password">
 
-<!--    нужно сделать список ролей, для компании-->
+    <!--    нужно сделать список ролей, для компании-->
     <input type="text" placeholder="Должность" name="role">
 
     <button>register</button>

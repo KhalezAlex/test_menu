@@ -18,8 +18,6 @@ public class GenerateBaseController {
 
     @GetMapping("/home")
     public String home() {
-//        System.out.println("home");
-//        System.out.println(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
         return "home";
     }
 
