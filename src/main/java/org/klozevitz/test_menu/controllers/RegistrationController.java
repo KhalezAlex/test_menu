@@ -59,12 +59,12 @@ public class RegistrationController {
      * chefId = Id профайла Менеджера
      */
     @PostMapping("/managerSubs")
-    public String managerSubs(@RequestParam String username, @RequestParam String password,
-                              RedirectAttributes ra, String role, Integer id, Integer chefId) {
+    public String managerSubs(@RequestParam String username, @RequestParam String password, RedirectAttributes ra,
+                              @RequestParam String role, @RequestParam Integer id, @RequestParam Integer chefId) {
         if (userDAO.findUserByUsername(username) != null || companyDAO.findById(id).isEmpty()
                 || profileDAO.findById(chefId).isEmpty()) {
             ra.addFlashAttribute("error", "login");
-            return "redirect:/register";
+            return "redirect:/register/managerSubs";
         }
         if (role.equalsIgnoreCase("Waiter")) {
             userDAO.saveEmployee(new User(username, password,
@@ -72,7 +72,7 @@ public class RegistrationController {
         } else {
             userDAO.saveEmployee(new User(username, password, new Profile(companyDAO.findById(id).get())), role);
         }
-        return null;
+        return "pages/home";
     }
 
     @PostMapping("/chefSubs")
