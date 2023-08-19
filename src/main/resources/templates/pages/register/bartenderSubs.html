@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Register manager subs</title>
+</head>
+<body>
+<form method="post" th:action="@{/register/bartenderSubs}">
+
+    <input type="number" th:value="${bartender.profile.company.id}" name="id" hidden>
+    <input type="number" th:value="${bartender.profile.id}" name="chefId" hidden>
+
+    <input type="text" placeholder="Логин" name="username">
+    <span th:if="${error != null && error == 'login'}">
+                Login is already in use</span>
+
+    <input type="password" placeholder="Пароль" name="password">
+
+    <!--    нужно сделать список ролей, для компании-->
+    <input type="text" placeholder="Должность" name="role">
+
+    <button>register</button>
+</form>
+</body>
+</html>

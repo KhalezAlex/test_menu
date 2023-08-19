@@ -14,11 +14,6 @@ public enum Role {
     HEAD_BARTENDER,
     BARTENDER;
 
-//    @Override
-//    public String getAuthority() {
-//        return this.name();
-//    }
-
     public static Stream<Role> stream() {
         return Stream.of(Role.values());
     }
