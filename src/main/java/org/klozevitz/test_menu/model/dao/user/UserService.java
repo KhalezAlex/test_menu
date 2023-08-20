@@ -76,7 +76,7 @@ public class UserService implements IDaoUser {
     @Override
     public void saveAdmin(User user) {
         user.setPassword(user.getPassword());
-        user.setRole(Role.MANAGER);
+        user.setRole(Role.ADMIN);
         userRepository.save(user);
     }
 }
