@@ -30,6 +30,7 @@ public class SecurityConfig {
                         .requestMatchers("/register/managerSubs").hasRole("MANAGER")
                         .requestMatchers("/register/chefSubs").hasRole("CHEF")
                         .requestMatchers("/register/bartenderSubs").hasRole("HEAD_BARTENDER")
+                                .requestMatchers("/admin_user/**").hasRole("ADMIN")
                         .requestMatchers("/logout").authenticated()
                         .requestMatchers("/register/company").anonymous()
                         .requestMatchers("/auth/**", "/service/**", "/").permitAll()
