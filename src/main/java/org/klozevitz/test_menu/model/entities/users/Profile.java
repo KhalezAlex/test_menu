@@ -29,7 +29,7 @@ public class Profile {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "age")
+    @Column(name = "age", length = 2)
     private Integer age;
 
     @ManyToOne
@@ -41,6 +41,7 @@ public class Profile {
     }
 
     public Profile(Company company, Profile chief) {
+        this.age = 0;
         this.company = company;
         this.chief = chief;
         this.subs = new HashSet<>();

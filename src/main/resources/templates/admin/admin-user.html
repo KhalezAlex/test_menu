@@ -6,7 +6,8 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
-<!--<h1 class="text-center">Customer page</h1>-->
+<header th:insert="admin/admin-header.html :: header(${navSelected})"></header>
+<h1 class="text-center">Customer page</h1>
 <div class="card container-fluid" style="width: auto;">
     <h1 class="card-text text-center">Customers</h1>
     <div class="card-body">
@@ -18,10 +19,12 @@
             <tr>
                 <thead>
                 <th scope="col">id</th>
-                <th scope="col">Login</th>
-                <th scope="col">Name</th>
-                <th scope="col">Age</th>
-                <th scope="col">Role</th>
+                <th scope="col">Логин</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Компания</th>
+                <th scope="col">Начальник</th>
+                <th scope="col">Роль</th>
                 <th scope="col">Delete</th>
                 <th scope="col">Update</th>
                 </thead>
@@ -31,6 +34,33 @@
                 <tr>
                     <th scope="row" >[[${user.id}]]</th>
                     <th scope="row" >[[${user.username}]]</th>
+                    <th:block th:if="${user.profile != null}">
+                        <th:block th:if="${user.profile.firstName != null}">
+                            <th scope="row"> [[${user.profile.firstName}]]</th>
+                        </th:block>
+                        <th:block th:if="${user.profile.firstName == null}">
+                            <th scope="row"></th>
+                        </th:block>
+                        <th:block th:if="${user.profile.lastName != null}">
+                            <th scope="row"> [[${user.profile.firstName}]]</th>
+                        </th:block>
+                        <th:block th:if="${user.profile.lastName == null}">
+                            <th scope="row"></th>
+                        </th:block>
+                        <th scope="row">[[${user.profile.company.name}]]</th>
+                        <th:block th:if="${user.profile.chief != null}">
+                            <th scope="row">[[${user.profile.chief.user.username}]]</th>
+                        </th:block>
+                        <th:block th:if="${user.profile.chief == null}">
+                            <th scope="row"></th>
+                        </th:block>
+                    </th:block>
+                    <th:block th:if="${user.profile == null}">
+                        <th scope="row"></th>
+                        <th scope="row"></th>
+                        <th scope="row">[[${user.username}]]</th>
+                        <th scope="row"></th>
+                    </th:block>
                     <th scope="row" >[[${user.role}]]</th>
                 </tr>
             </th:block>
