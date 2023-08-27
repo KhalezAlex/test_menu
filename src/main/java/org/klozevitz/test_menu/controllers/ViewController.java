@@ -62,6 +62,12 @@ public class ViewController {
         return "pages/register/bartenderSubs";
     }
 
+    @GetMapping("/register/menu")
+    public String menu(Model model, Authentication auth){
+        model.addAttribute("company", userDAO.findUserByUsername(auth.getName()));
+        return "pages/home";
+    }
+
     @GetMapping("/logout")
     public  String logout(HttpServletRequest request) {
         if (SecurityContextHolder.getContext().getAuthentication() != null) {
