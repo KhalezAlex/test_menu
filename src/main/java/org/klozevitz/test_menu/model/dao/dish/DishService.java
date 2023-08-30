@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class DishService implements IDaoDB<Dish> {
+public class DishService implements IDaoDish {
 
     private final DishRepository dishRepository;
 

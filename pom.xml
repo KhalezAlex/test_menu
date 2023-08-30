@@ -20,6 +20,9 @@
 		<junit.params>5.9.2</junit.params>
 		<junit.suite>1.9.2</junit.suite>
 		<jjwt>0.11.5</jjwt>
+		<ibm.icu>72.1</ibm.icu>
+		<webjars-bootstrap>5.2.3</webjars-bootstrap>
+		<webjars-locator-core>0.52</webjars-locator-core>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -64,6 +67,11 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.ibm.icu</groupId>
+			<artifactId>icu4j</artifactId>
+			<version>${ibm.icu}</version>
+		</dependency>
 <!--		JWT-->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
@@ -105,6 +113,18 @@
 			<version>${junit.suite}</version>
 			<scope>test</scope>
 		</dependency>
+<!--		Бутстрап-->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>${webjars-bootstrap}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>webjars-locator-core</artifactId>
+			<version>${webjars-locator-core}</version>
+		</dependency>
+<!--		/Бутстрап-->
 	</dependencies>
 
 	<build>

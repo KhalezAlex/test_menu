@@ -6,9 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.klozevitz.test_menu.model.entities.menu.Menu;
-import org.klozevitz.test_menu.model.entities.users.User;
-import org.klozevitz.test_menu.model.entities.menu.Dish;
-
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -28,9 +26,19 @@ public class Company {
     @Column(name = "premium")
     private Boolean premium;
 
+    public Company(String name, User user, Menu menu) {
+        this.name = name;
+        this.user = user;
+        this.menu = menu;
+        this.premium = false;
+    }
     public Company(String name, User user) {
         this.name = name;
         this.user = user;
+        this.menu = Menu.builder()
+                .kitchen(new HashSet<>())
+                .bar(new HashSet<>())
+                .build();
         this.premium = false;
     }
 

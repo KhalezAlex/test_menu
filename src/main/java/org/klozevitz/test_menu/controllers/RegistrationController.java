@@ -7,7 +7,6 @@ import org.klozevitz.test_menu.model.dao.user.IDaoUser;
 import org.klozevitz.test_menu.model.entities.users.Company;
 import org.klozevitz.test_menu.model.entities.users.Profile;
 import org.klozevitz.test_menu.model.entities.users.User;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,8 +75,8 @@ public class RegistrationController {
     }
 
     @PostMapping("/chefSubs")
-    public String chefSubs(@RequestParam String username, @RequestParam String password,
-                           RedirectAttributes ra, String role, Integer id, Integer chefId) {
+    public String chefSubs(@RequestParam String username, @RequestParam String password, RedirectAttributes ra,
+                           @RequestParam Integer id, @RequestParam Integer chefId) {
         //создает повара
         if (userDAO.findUserByUsername(username) != null || companyDAO.findById(id).isEmpty()
                 || profileDAO.findById(chefId).isEmpty()) {
@@ -85,13 +84,13 @@ public class RegistrationController {
             return "redirect:/register";
         }
         userDAO.saveEmployee(new User(username, password, new Profile(companyDAO.findById(id).get(),
-                profileDAO.findById(chefId).get())), role);
-        return null;
+                profileDAO.findById(chefId).get())), "COOK");
+        return "pages/home";
     }
 
     @PostMapping("/bartenderSubs")
-    public String bartenderSubs(@RequestParam String username, @RequestParam String password,
-                                RedirectAttributes ra, String role, Integer id, Integer chefId) {
+    public String bartenderSubs(@RequestParam String username, @RequestParam String password, RedirectAttributes ra,
+                                @RequestParam Integer id, @RequestParam Integer chefId) {
         //создает барменов
         if (userDAO.findUserByUsername(username) != null || companyDAO.findById(id).isEmpty()
                 || profileDAO.findById(chefId).isEmpty()) {
@@ -100,7 +99,7 @@ public class RegistrationController {
         }
         //Добавить связь с шефом барменов в профиле
         userDAO.saveEmployee(new User(username, password, new Profile(companyDAO.findById(id).get(),
-                profileDAO.findById(chefId).get())), role);
-        return null;
+                profileDAO.findById(chefId).get())), "BARTENDER");
+        return "pages/home";
     }
 }

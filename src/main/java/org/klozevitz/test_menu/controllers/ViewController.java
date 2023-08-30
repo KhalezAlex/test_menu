@@ -25,9 +25,6 @@ public class ViewController {
     private final IDaoUser userDAO;
     @GetMapping("/")
     public String home() {
-//        System.out.println("mapping \"home\"");
-//        System.out.println(SecurityContextHolder.getContext().getAuthentication());
-//        System.out.println(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
         return "pages/home";
     }
 
@@ -49,9 +46,26 @@ public class ViewController {
 
     @GetMapping("/register/managerSubs")
     public String manager(Model model, Authentication auth) {
-        User user = userDAO.findUserByUsername(auth.getName());
-        model.addAttribute("manager", user);
+        model.addAttribute("manager", userDAO.findUserByUsername(auth.getName()));
         return "pages/register/managerSubs";
+    }
+
+    @GetMapping("/register/chefSubs")
+    public String cook(Model model, Authentication auth) {
+        model.addAttribute("chef", userDAO.findUserByUsername(auth.getName()));
+        return "pages/register/chefSubs";
+    }
+
+    @GetMapping("/register/bartenderSubs")
+    public String bartender(Model model, Authentication auth) {
+        model.addAttribute("bartender", userDAO.findUserByUsername(auth.getName()));
+        return "pages/register/bartenderSubs";
+    }
+
+    @GetMapping("/menu/register")
+    public String menu(Model model, Authentication auth){
+        model.addAttribute("user", userDAO.findUserByUsername(auth.getName()));
+        return "pages/menu/menu";
     }
 
     @GetMapping("/logout")

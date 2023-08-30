@@ -32,7 +32,6 @@ public class UserService implements IDaoUser {
     public User save(User user) {
         user.setPassword(encoder.encode(user.getPassword()));
         user.setRole(Role.COMPANY);
-        System.out.println(user);
         return userRepository.save(user);
     }
 
@@ -75,8 +74,8 @@ public class UserService implements IDaoUser {
 
     @Override
     public void saveAdmin(User user) {
-        user.setPassword(user.getPassword());
-        user.setRole(Role.MANAGER);
+        user.setPassword(encoder.encode(user.getPassword()));
+        user.setRole(Role.ADMIN);
         userRepository.save(user);
     }
 }
