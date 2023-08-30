@@ -38,6 +38,7 @@ public class Profile {
 
     public Profile(Company company) {
         this.company = company;
+        this.age = 0;
     }
 
     public Profile(Company company, Profile chief) {

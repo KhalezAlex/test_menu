@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.klozevitz.test_menu.model.entities.users.Company;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -29,4 +30,5 @@ public class Menu {
 
     @OneToMany
     private Set<Dish> bar;
+
 }

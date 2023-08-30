@@ -42,4 +42,11 @@ public class Dish {
 
     @ManyToOne
     private Menu menu;
+
+    public Dish(String name, Double price, Company company, Menu menu) {
+        this.name = name;
+        this.price = price;
+        this.company = company;
+        this.menu = menu;
+    }
 }

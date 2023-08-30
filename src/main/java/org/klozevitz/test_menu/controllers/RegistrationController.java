@@ -7,7 +7,6 @@ import org.klozevitz.test_menu.model.dao.user.IDaoUser;
 import org.klozevitz.test_menu.model.entities.users.Company;
 import org.klozevitz.test_menu.model.entities.users.Profile;
 import org.klozevitz.test_menu.model.entities.users.User;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

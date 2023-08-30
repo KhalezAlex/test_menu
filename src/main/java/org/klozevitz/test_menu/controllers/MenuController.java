@@ -1,23 +1,37 @@
 package org.klozevitz.test_menu.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.klozevitz.test_menu.model.dao.company.IDaoCompany;
+import org.klozevitz.test_menu.model.dao.dish.IDaoDish;
 import org.klozevitz.test_menu.model.dao.menu.IDaoMenu;
+import org.klozevitz.test_menu.model.entities.menu.Dish;
+import org.klozevitz.test_menu.model.entities.menu.Menu;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Collections;
 
 @Controller
 @RequestMapping("/menu")
 @RequiredArgsConstructor
 public class MenuController {
 
-    final public IDaoMenu menuDAO;
+    public final IDaoMenu menuDAO;
+    public final IDaoCompany companyDAO;
+    public final IDaoDish dishDAO;
 
     @PostMapping("/register")
-    public String menu(@RequestParam String dish, ){
+    public String menu(@ModelAttribute Menu menu , @RequestParam String dish, @RequestParam Integer id, @RequestParam String dishName,
+                       @RequestParam Double price){
 
-        return null;
+        Dish kitchen = new Dish(dishName, price, companyDAO.findCompanyByUserId(id), menuDAO.findById(1).get());
+        System.out.println(kitchen.getCompany().getName());
+
+        return "redirect:/menu/register";
+
     }
 
 }

@@ -26,7 +26,7 @@ public class SecurityConfig {
 //                        .requestMatchers("/event/save", "/new_event").hasAnyRole("ADMIN", "USER")
 //                        .requestMatchers("/profile", "/profile/update", "/logout", "/profile/activity/*",
 //                                "/event/participate", "/event/roastOut", "event/filter").authenticated()
-                        .requestMatchers("/register/chiefs").hasRole("COMPANY")
+                        .requestMatchers("/register/chiefs", "/menu/register").hasRole("COMPANY")
                         .requestMatchers("/register/managerSubs").hasRole("MANAGER")
                         .requestMatchers("/register/chefSubs").hasRole("CHEF")
                         .requestMatchers("/register/bartenderSubs").hasRole("HEAD_BARTENDER")
