@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Collections;
-
 @Controller
 @RequestMapping("/menu")
 @RequiredArgsConstructor
@@ -23,7 +21,7 @@ public class MenuController {
     public final IDaoCompany companyDAO;
     public final IDaoDish dishDAO;
 
-    @PostMapping("/register")
+    @PostMapping("/add")
     public String menu(@ModelAttribute Menu menu , @RequestParam String dish, @RequestParam Integer id, @RequestParam String dishName,
                        @RequestParam Double price){
 

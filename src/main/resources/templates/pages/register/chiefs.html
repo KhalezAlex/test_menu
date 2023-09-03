@@ -7,16 +7,21 @@
 <body>
 <form method="post" th:action="@{/register/chiefs}" >
 
-    <input type="number" th:value="${chiefs}" name="id" hidden>
+    <input type="number" th:value="${companyId}" name="id" hidden>
 
     <input type="text" placeholder="Логин" name="username">
     <span th:if="${error != null && error == 'login'}">
-                Login is already in use</span>
+        Логин уже используется
+    </span>
 
     <input type="password" placeholder="Пароль" name="password">
 
-<!--    нужно сделать список ролей, для компании-->
-    <input type="text" placeholder="Должность" name="role">
+    <select name="role">
+        <th:block th:each="role: ${roles}">
+            <option th:if="${role == roles[0]}" selected>[[${role}]]</option>
+            <option th:unless="${role == roles[0]}">[[${role}]]</option>
+        </th:block>
+    </select>
 
     <button>register</button>
 </form>

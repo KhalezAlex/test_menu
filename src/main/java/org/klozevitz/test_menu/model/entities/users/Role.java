@@ -1,7 +1,5 @@
 package org.klozevitz.test_menu.model.entities.users;
 
-import org.springframework.security.core.GrantedAuthority;
-
 import java.util.stream.Stream;
 
 public enum Role {

@@ -2,20 +2,17 @@ package org.klozevitz.test_menu.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.klozevitz.test_menu.model.dao.company.IDaoCompany;
 import org.klozevitz.test_menu.model.dao.user.IDaoUser;
 import org.klozevitz.test_menu.model.entities.users.Role;
-import org.klozevitz.test_menu.model.entities.users.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.stream.Stream;
+import java.util.LinkedList;
+import java.util.List;
 
 @Controller
 @RequestMapping(path = "/")
@@ -34,14 +31,23 @@ public class ViewController {
     }
 
     @GetMapping("/register/company")
-    public String register() {
+    public String registerCompany() {
         return "pages/register/company";
     }
 
     @GetMapping("/register/chiefs")
     public String chiefs(Model model, Authentication auth) {
-        model.addAttribute("chiefs", userDAO.findUserByUsername(auth.getName()).getId());
+        model.addAttribute("companyId", userDAO.findUserByUsername(auth.getName()).getId());
+        model.addAttribute("roles", roles());
         return "pages/register/chiefs";
+    }
+
+    private List<Role> roles() {
+        List<Role> roles = new LinkedList<>();
+        roles.add(Role.HEAD_BARTENDER);
+        roles.add(Role.CHEF);
+        roles.add(Role.MANAGER);
+        return roles;
     }
 
     @GetMapping("/register/managerSubs")
@@ -62,7 +68,7 @@ public class ViewController {
         return "pages/register/bartenderSubs";
     }
 
-    @GetMapping("/menu/register")
+    @GetMapping("/menu/add")
     public String menu(Model model, Authentication auth){
         model.addAttribute("user", userDAO.findUserByUsername(auth.getName()));
         return "pages/menu/menu";

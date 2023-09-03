@@ -22,15 +22,13 @@ public class SecurityConfig {
         http
                 .csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
-//                        .requestMatchers("").hasRole("MANAGER")
-//                        .requestMatchers("/event/save", "/new_event").hasAnyRole("ADMIN", "USER")
-//                        .requestMatchers("/profile", "/profile/update", "/logout", "/profile/activity/*",
-//                                "/event/participate", "/event/roastOut", "event/filter").authenticated()
-                        .requestMatchers("/register/chiefs", "/menu/register").hasRole("COMPANY")
+                        .requestMatchers("/register/chiefs").hasRole("COMPANY")
+                        .requestMatchers("/register/linear/*").hasAnyRole("MANAGER", "CHEF", "HEAD_BARTENDER")
+                        .requestMatchers("/register/chiefs", "/menu/add").hasRole("COMPANY")
                         .requestMatchers("/register/managerSubs").hasRole("MANAGER")
                         .requestMatchers("/register/chefSubs").hasRole("CHEF")
                         .requestMatchers("/register/bartenderSubs").hasRole("HEAD_BARTENDER")
-                                .requestMatchers("/admin_user/**").hasRole("ADMIN")
+                        .requestMatchers("/admin_user/**").hasRole("ADMIN")
                         .requestMatchers("/logout").authenticated()
                         .requestMatchers("/register/company").anonymous()
                         .requestMatchers("/auth/**", "/service/**", "/").permitAll()
