@@ -26,6 +26,7 @@ public class HeaderAttributesFilter implements Filter {
 
     private void setHeaderAttributes(ServletRequest request) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        request.setAttribute("isAuthenticated", auth == null);
         if (auth != null) {
             setAuthAttrs(request, auth);
         }

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../static/styles/header.css" />
 </head>
 <body>
-    <nav th:fragment="layout_header">
+    <nav th:fragment="layout_header(isAuthenticated, isAdmin, username)">
         <ul>
             <li>
                 <button onclick="window.location.href = '/'">домой</button>
@@ -19,10 +19,15 @@
                 <button>наши партнеры</button>
             </li>
             <li>
-                <button>админ</button>
+                <button th:if="${isAuthenticated && isAdmin}" onclick="window.location.href = '/admin'">
+                    админ
+                </button>
             </li>
             <li>
-                <button onclick="window.location.href = '/login'">войти</button>
+                <button th:if="${isAuthenticated}" onclick="window.location.href = '/login'">войти</button>
+                <button th:unless="${isAuthenticated}"onclick="window.location.href = '/profile'">
+                    [[${username}]]
+                </button>
             </li>
         </ul>
     </nav>
