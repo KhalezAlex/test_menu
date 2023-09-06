@@ -37,14 +37,15 @@ public class MenuController {
             System.out.println(menu.getId());
             System.out.println(dish.getName());
             System.out.println(menu.getBar());
-            menu.getBar().add(dish);
+            menu.setBar(Collections.singleton(dish));
             System.out.println("38");
         } else {
             System.out.println("40");
             menu.getKitchen().add(dish);
         }
         System.out.println("43");
-//        menuDAO.update(menu);
+        menuDAO.update(menu);
+        System.out.println("48");
         return "redirect:/menu/add";
     }
 }

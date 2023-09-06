@@ -32,13 +32,17 @@ public class MenuService implements IDaoMenu{
 
     @Override
     public Menu update(Menu menu) {
-        Menu updated = repository.findById(menu.getId()).orElse(null);
-        if (updated == null){
-            return null;
+//        Menu updated = repository.findById(menu.getId()).orElse(null);
+//        if (updated == null){
+//            return null;
+//        }
+//        updated.setCompany(menu.getCompany());
+//        updated.setKitchen(menu.getKitchen());
+//        return updated;
+        if(repository.findById(menu.getId()).isPresent()){
+            return repository.save(menu);
         }
-        updated.setCompany(menu.getCompany());
-        updated.setKitchen(menu.getKitchen());
-        return updated;
+        return null;
     }
 
     @Override
