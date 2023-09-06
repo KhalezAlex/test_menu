@@ -26,8 +26,8 @@ public class GenerateBaseController {
     public String generate() {
         userDAO.saveAdmin(new User("admin", "admin"));//1
 
-        companyDAO.save(new Company("Danone", userDAO.save(new User("danone", "danone"))));//2
-        companyDAO.save(new Company("Rocs", userDAO.save(new User("rocs", "rocs"))));//3
+//        companyDAO.save(new Company("Danone", userDAO.save(new User("danone", "danone"))));//2
+//        companyDAO.save(new Company("Rocs", userDAO.save(new User("rocs", "rocs"))));//3
 
         userDAO.saveEmployee(new User("Manager_Danone", "123",
                 new Profile(companyDAO.findCompanyByUserId(2))), "Manager");//4//1

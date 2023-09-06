@@ -3,12 +3,14 @@ package org.klozevitz.test_menu.model.dao.menu;
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.entities.menu.Menu;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MenuService implements IDaoMenu{
 
     final public MenuRepository repository;
@@ -35,6 +37,7 @@ public class MenuService implements IDaoMenu{
             return null;
         }
         updated.setCompany(menu.getCompany());
+        updated.setKitchen(menu.getKitchen());
         return updated;
     }
 

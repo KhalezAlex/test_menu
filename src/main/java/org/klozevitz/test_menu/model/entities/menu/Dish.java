@@ -29,7 +29,7 @@ public class Dish {
 
     //Картинки блюд
     @Lob
-    private String upic;
+    private String photo;
 
     @ManyToMany
     @JoinTable(name = "dish_ingredients_t", joinColumns = @JoinColumn(name = "dish_id"),
@@ -37,16 +37,11 @@ public class Dish {
     private Set<Ingredient> ingredients;
 
     @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
-
-    @ManyToOne
     private Menu menu;
 
-    public Dish(String name, Double price, Company company, Menu menu) {
+    public Dish(String name, Double price, Menu menu) {
         this.name = name;
         this.price = price;
-        this.company = company;
         this.menu = menu;
     }
 }
