@@ -1,10 +1,7 @@
 package org.klozevitz.test_menu.model.entities.users;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.klozevitz.test_menu.model.entities.menu.Menu;
 import java.util.HashSet;
 import java.util.Set;
@@ -32,15 +29,15 @@ public class Company {
         this.menu = menu;
         this.premium = false;
     }
-    public Company(String name, User user) {
-        this.name = name;
-        this.user = user;
-        this.menu = Menu.builder()
-                .kitchen(new HashSet<>())
-                .bar(new HashSet<>())
-                .build();
-        this.premium = false;
-    }
+//    public Company(String name, User user) {
+//        this.name = name;
+//        this.user = user;
+//        this.menu = Menu.builder()
+//                .kitchen(new HashSet<>())
+//                .bar(new HashSet<>())
+//                .build();
+//        this.premium = false;
+//    }
 
     @OneToOne(cascade = CascadeType.ALL)
     private User user;

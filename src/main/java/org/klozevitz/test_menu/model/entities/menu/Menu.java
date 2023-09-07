@@ -1,10 +1,7 @@
 package org.klozevitz.test_menu.model.entities.menu;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.klozevitz.test_menu.model.entities.users.Company;
 
 import java.util.HashSet;
@@ -12,7 +9,6 @@ import java.util.Set;
 
 @Data
 @Builder(toBuilder = true)
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "menu_t")
@@ -31,4 +27,8 @@ public class Menu {
     @OneToMany
     private Set<Dish> bar;
 
+    public Menu() {
+        this.kitchen = new HashSet<>();
+        this.bar = new HashSet<>();
+    }
 }

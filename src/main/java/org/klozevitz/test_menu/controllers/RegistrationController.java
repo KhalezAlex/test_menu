@@ -2,8 +2,10 @@ package org.klozevitz.test_menu.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.dao.company.IDaoCompany;
+import org.klozevitz.test_menu.model.dao.menu.IDaoMenu;
 import org.klozevitz.test_menu.model.dao.profile.IDaoProfile;
 import org.klozevitz.test_menu.model.dao.user.IDaoUser;
+import org.klozevitz.test_menu.model.entities.menu.Menu;
 import org.klozevitz.test_menu.model.entities.users.Company;
 import org.klozevitz.test_menu.model.entities.users.Profile;
 import org.klozevitz.test_menu.model.entities.users.User;
@@ -20,6 +22,7 @@ public class RegistrationController {
     private final IDaoUser userDAO;
     private final IDaoCompany companyDAO;
     private final IDaoProfile profileDAO;
+    private final IDaoMenu menuDAO;
 
     @PostMapping("/company")
     public String register(@RequestParam String username, @RequestParam String password,
@@ -32,7 +35,7 @@ public class RegistrationController {
             ra.addFlashAttribute("error", "company_name");
             return "redirect:/register";
         }
-        companyDAO.save(new Company(companyName, userDAO.save(new User(username, password))));
+        companyDAO.save(new Company(companyName, userDAO.save(new User(username, password)), menuDAO.save(new Menu())));
         return "pages/login";
     }
 

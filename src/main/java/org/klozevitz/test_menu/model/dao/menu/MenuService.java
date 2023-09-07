@@ -3,12 +3,14 @@ package org.klozevitz.test_menu.model.dao.menu;
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.test_menu.model.entities.menu.Menu;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MenuService implements IDaoMenu{
 
     final public MenuRepository repository;
@@ -30,12 +32,17 @@ public class MenuService implements IDaoMenu{
 
     @Override
     public Menu update(Menu menu) {
-        Menu updated = repository.findById(menu.getId()).orElse(null);
-        if (updated == null){
-            return null;
+//        Menu updated = repository.findById(menu.getId()).orElse(null);
+//        if (updated == null){
+//            return null;
+//        }
+//        updated.setCompany(menu.getCompany());
+//        updated.setKitchen(menu.getKitchen());
+//        return updated;
+        if(repository.findById(menu.getId()).isPresent()){
+            return repository.save(menu);
         }
-        updated.setCompany(menu.getCompany());
-        return updated;
+        return null;
     }
 
     @Override

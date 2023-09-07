@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/styles/login.css" />
   </head>
   <body>
-  <th:block th:insert="~{layouts/header.html :: layout_header}"></th:block>
+  <th:block th:insert="~{layouts/header.html :: layout_header(${isAuthenticated}, ${isAdmin}, ${username})}"></th:block>
     <div class="content">
       <h1>Registration</h1>
       <form th:method="post" th:action="@{/register/company}">
