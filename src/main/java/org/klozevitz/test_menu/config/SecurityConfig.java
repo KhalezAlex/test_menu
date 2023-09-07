@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/styles/*");
+        return (web) -> web.ignoring().requestMatchers("/styles/**", "/fonts/**", "/scripts/**");
     }
 
     @Bean
@@ -39,7 +39,10 @@ public class SecurityConfig {
                         .failureUrl("/login?error=true")
                         .permitAll()
                         .defaultSuccessUrl("/")
-                );
+                )
+                .logout((logout) -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/"));
         return http.build();
     }
 }

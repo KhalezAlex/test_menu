@@ -73,12 +73,4 @@ public class ViewController {
         model.addAttribute("user", userDAO.findUserByUsername(auth.getName()));
         return "pages/menu/menu";
     }
-
-    @GetMapping("/logout")
-    public  String logout(HttpServletRequest request) {
-        if (SecurityContextHolder.getContext().getAuthentication() != null) {
-            request.getSession().invalidate();
-        }
-        return "pages/home";
-    }
 }

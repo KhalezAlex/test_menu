@@ -19,15 +19,17 @@
                 <button>наши партнеры</button>
             </li>
             <li>
-                <button th:if="${isAuthenticated && isAdmin}" onclick="window.location.href = '/admin'">
-                    админ
-                </button>
+                <th:block th:if="${isAuthenticated}">
+                    <button th:if="${isAdmin}" onclick="window.location.href = '/admin'">
+                        админ
+                    </button>
+                </th:block>
             </li>
             <li>
-                <button th:if="${isAuthenticated}" onclick="window.location.href = '/login'">войти</button>
-                <button th:unless="${isAuthenticated}"onclick="window.location.href = '/profile'">
+                <button th:if="${isAuthenticated}"onclick="window.location.href = '/profile'">
                     [[${username}]]
                 </button>
+                <button th:unless="${isAuthenticated}" onclick="window.location.href = '/login'">войти</button>
             </li>
         </ul>
     </nav>
